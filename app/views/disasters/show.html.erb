@@ -1,0 +1,24 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>名稱</th>
+      <th>詳細敘述</th>
+      <th>date</th>
+      <th>Creator</th>
+
+    </tr>
+  </thead>
+  <tbody>
+        <tr>
+          <td><%= @disaster.name %></td>
+          <td><%= @disaster.description %></td>
+          <td><%= @disaster.created_at %></td>
+          <td><%= @disaster.user.email %></td>
+        </tr>
+  </tbody>
+</table>
+<br>
+<div class="text-center">
+<%= link_to "回上一頁",disasters_path, class: "btn btn-primary" %>
+
+</div>
