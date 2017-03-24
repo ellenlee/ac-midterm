@@ -19,6 +19,8 @@ class DisastersController < ApplicationController
 
   def show
     @disaster = Disaster.find(params[:id])
+    @comments = @disaster.comments
+    @comment = Comment.new
   end
 
   def edit
@@ -43,9 +45,20 @@ class DisastersController < ApplicationController
     end
   end
 
+  def comment
+    @disaster = Disaster.find(params[:id])
+    @comment = Disaster.find(params[:id]).comments.new(comment_params)
+    @comment.save
+    redirect_to disaster_path(@disaster)
+  end
+
   private
 
   def disaster_params
     params.require(:disaster).permit(:name, :description, :info_id)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:content)
   end
 end
