@@ -1,0 +1,22 @@
+<div class="row text-center">
+<%= link_to("Create",new_disaster_path,class:"btn btn-warning ") %>
+<br><br><br>
+</div>
+<div class="row">
+  <% @disasters.each do |disaster| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption text-center">
+        <h3><%= link_to disaster.name,disaster_path(disaster) %></h3>
+        <br>
+
+        <p>
+        <%= link_to("Show",disaster_path(disaster), class: "btn btn-primary") %>
+        <%= link_to("Edit",edit_disaster_path(disaster), class: "btn btn-info") %>
+        <%= link_to("Delete",disaster_path(disaster),method: :delete, data:{confirm: "Are U sure??"}, class: "btn btn-warning") %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
