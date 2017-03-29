@@ -1,7 +1,10 @@
 class DisastersController < ApplicationController
+  before_action :authenticate_user!
+  # 如果沒有驗證，create 裡的 current_user.disasters 就會抓不到東西而壞掉
+
   def index
     @disasters = Disaster.paginate(page: params[:page], per_page: 3)
-    
+
   end
 
   def new
